@@ -2,28 +2,28 @@ package entities
 
 // Ether is the main usage of a 'native' currency, i.e. for Ethereum mainnet and all testnets
 type Ether struct {
-	*baseCurrency
+	*BaseCurrency
 }
 
 func EtherOnChain(chainId uint) *Ether {
 	ether := &Ether{
-		baseCurrency: &baseCurrency{
-			isNative: true,
-			isToken:  false,
-			chainId:  chainId,
-			decimals: 18,
-			symbol:   "ETH",
-			name:     "Ether",
+		BaseCurrency: &BaseCurrency{
+			IsNativez: true,
+			IsTokenz:  false,
+			ChainIdz:  chainId,
+			Decimalsz: 18,
+			Symbolz:   "ETH",
+			Namez:     "Ether",
 		},
 	}
-	ether.baseCurrency.currency = ether
+	ether.BaseCurrency.Currency = ether
 	return ether
 }
 
 func (e *Ether) Equal(other Currency) bool {
 	v, isEther := other.(*Ether)
 	if isEther {
-		return v.isNative && v.chainId == e.chainId
+		return v.IsNativez && v.ChainIdz == e.ChainIdz
 
 	}
 	return false

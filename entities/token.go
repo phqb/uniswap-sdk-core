@@ -14,7 +14,7 @@ var (
 
 // Token represents an ERC20 token with a unique address and some metadata.
 type Token struct {
-	*baseCurrency
+	*BaseCurrency
 	Address common.Address // The contract address on the chain on which this token lives
 }
 
@@ -24,17 +24,17 @@ func NewToken(chainID uint, address common.Address, decimals uint, symbol string
 		panic("Token currency decimals must be less than 255")
 	}
 	token := &Token{
-		baseCurrency: &baseCurrency{
-			isNative: false,
-			isToken:  true,
-			chainId:  chainID,
-			decimals: decimals,
-			symbol:   symbol,
-			name:     name,
+		BaseCurrency: &BaseCurrency{
+			IsNativez: false,
+			IsTokenz:  true,
+			ChainIdz:  chainID,
+			Decimalsz: decimals,
+			Symbolz:   symbol,
+			Namez:     name,
 		},
 		Address: address,
 	}
-	token.baseCurrency.currency = token
+	token.BaseCurrency.Currency = token
 	return token
 }
 
@@ -47,7 +47,7 @@ func (t *Token) Equal(other Currency) bool {
 	if other != nil {
 		v, isToken := other.(*Token)
 		if isToken {
-			return v.isToken && t.chainId == v.chainId && t.Address == v.Address
+			return v.IsTokenz && t.ChainIdz == v.ChainIdz && t.Address == v.Address
 		}
 	}
 	return false
@@ -61,7 +61,7 @@ func (t *Token) Equal(other Currency) bool {
  * @throws if the tokens are on different chains
  */
 func (t *Token) SortsBefore(other *Token) (bool, error) {
-	if t.chainId != other.chainId {
+	if t.ChainIdz != other.ChainIdz {
 		return false, ErrDifferentChain
 	}
 	if t.Address == other.Address {

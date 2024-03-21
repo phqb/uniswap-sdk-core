@@ -12,46 +12,46 @@ type Currency interface {
 	Wrapped() *Token
 }
 
-// baseCurrency is an abstract struct, do not use it directly
-type baseCurrency struct {
-	currency Currency
-	isNative bool   // Returns whether the currency is native to the chain and must be wrapped (e.g. Ether)
-	isToken  bool   // Returns whether the currency is a token that is usable in Uniswap without wrapping
-	chainId  uint   // The chain ID on which this currency resides
-	decimals uint   // The decimals used in representing currency amounts
-	symbol   string // The symbol of the currency, i.e. a short textual non-unique identifier
-	name     string // The name of the currency, i.e. a descriptive textual non-unique identifier
+// BaseCurrency is an abstract struct, do not use it directly
+type BaseCurrency struct {
+	Currency  Currency
+	IsNativez bool   // Returns whether the currency is native to the chain and must be wrapped (e.g. Ether)
+	IsTokenz  bool   // Returns whether the currency is a token that is usable in Uniswap without wrapping
+	ChainIdz  uint   // The chain ID on which this currency resides
+	Decimalsz uint   // The decimals used in representing currency amounts
+	Symbolz   string // The symbol of the currency, i.e. a short textual non-unique identifier
+	Namez     string // The name of the currency, i.e. a descriptive textual non-unique identifier
 }
 
-func (c *baseCurrency) IsNative() bool {
-	return c.isNative
+func (c *BaseCurrency) IsNative() bool {
+	return c.IsNativez
 }
 
-func (c *baseCurrency) IsToken() bool {
-	return c.isToken
+func (c *BaseCurrency) IsToken() bool {
+	return c.IsTokenz
 }
 
-func (c *baseCurrency) ChainId() uint {
-	return c.chainId
+func (c *BaseCurrency) ChainId() uint {
+	return c.ChainIdz
 }
 
-func (c *baseCurrency) Decimals() uint {
-	return c.decimals
+func (c *BaseCurrency) Decimals() uint {
+	return c.Decimalsz
 }
 
-func (c *baseCurrency) Symbol() string {
-	return c.symbol
+func (c *BaseCurrency) Symbol() string {
+	return c.Symbolz
 }
 
-func (c *baseCurrency) Name() string {
-	return c.name
+func (c *BaseCurrency) Name() string {
+	return c.Namez
 }
 
 // Equal returns whether the currency is equal to the other currency
-func (c *baseCurrency) Equal(other Currency) bool {
+func (c *BaseCurrency) Equal(other Currency) bool {
 	panic("Equal method has to be overridden")
 }
 
-func (c *baseCurrency) Wrapped() *Token {
+func (c *BaseCurrency) Wrapped() *Token {
 	panic("Wrapped method has to be overridden")
 }

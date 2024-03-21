@@ -14,7 +14,7 @@ type Currency interface {
 
 // BaseCurrency is an abstract struct, do not use it directly
 type BaseCurrency struct {
-	Currency  Currency
+	currency  Currency
 	IsNativez bool   // Returns whether the currency is native to the chain and must be wrapped (e.g. Ether)
 	IsTokenz  bool   // Returns whether the currency is a token that is usable in Uniswap without wrapping
 	ChainIdz  uint   // The chain ID on which this currency resides

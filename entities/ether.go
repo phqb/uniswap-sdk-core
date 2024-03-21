@@ -16,7 +16,7 @@ func EtherOnChain(chainId uint) *Ether {
 			Namez:     "Ether",
 		},
 	}
-	ether.BaseCurrency.Currency = ether
+	ether.BaseCurrency.currency = ether
 	return ether
 }
 

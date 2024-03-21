@@ -34,7 +34,7 @@ func NewToken(chainID uint, address common.Address, decimals uint, symbol string
 		},
 		Address: address,
 	}
-	token.BaseCurrency.Currency = token
+	token.BaseCurrency.currency = token
 	return token
 }
 
